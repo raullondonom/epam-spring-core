@@ -15,6 +15,6 @@ public interface TrainerService {
 
     Trainer updateTrainer(Trainer trainer);
 
-    Trainer selectTrainer(Long traineeId);
+    Trainer selectTrainer(Long trainerId);
 
 }
