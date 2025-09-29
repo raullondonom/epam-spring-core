@@ -8,7 +8,7 @@ public interface TraineeDAO {
 
     Trainee updateTrainee(Trainee trainee);
 
-    Trainee deleteTrainee(Trainee trainee);
+    Trainee deleteTrainee(Long traineeId);
 
     Trainee selectTrainee(Long traineeId);
 

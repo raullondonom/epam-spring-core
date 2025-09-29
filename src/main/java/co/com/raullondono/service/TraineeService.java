@@ -15,7 +15,7 @@ public interface TraineeService {
 
     Trainee updateTrainee(Trainee trainee);
 
-    Trainee deleteTrainee(Trainee trainee);
+    Trainee deleteTrainee(Long traineeId);
 
     Trainee selectTrainee(Long traineeId);
 

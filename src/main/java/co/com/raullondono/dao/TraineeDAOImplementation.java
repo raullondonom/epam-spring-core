@@ -39,11 +39,10 @@ public class TraineeDAOImplementation implements TraineeDAO {
     }
 
     @Override
-    public Trainee deleteTrainee(Trainee trainee) {
-        Objects.requireNonNull(trainee);
-        Objects.requireNonNull(trainee.getUserId());
-        Trainee removed = storage.remove(trainee.getUserId());
-        log.warn("Trainee deleted id={}", trainee.getUserId());
+    public Trainee deleteTrainee(Long userId) {
+        Objects.requireNonNull(userId);
+        Trainee removed = storage.remove(userId);
+        log.warn("Trainee deleted id={}", userId);
         return removed;
     }
 

@@ -63,10 +63,10 @@ public class TraineeServiceImplementation implements TraineeService {
     }
 
     @Override
-    public Trainee deleteTrainee(Trainee trainee) {
-        Objects.requireNonNull(trainee, "trainee");
-        var removed = traineeDAO.deleteTrainee(trainee);
-        log.warn("Trainee deleted id={}", trainee.getUserId());
+    public Trainee deleteTrainee(Long traineeId) {
+        Objects.requireNonNull(traineeId, "traineeId");
+        var removed = traineeDAO.deleteTrainee(traineeId);
+        log.warn("Trainee deleted id={}", traineeId);
         return removed;
     }
 
