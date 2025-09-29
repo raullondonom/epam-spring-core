@@ -12,33 +12,6 @@ public class Trainee extends User {
 
     }
 
-    public Trainee(User user, LocalDate dateOfBirth, String address, String phoneNumber) {
-        super(user.getUserId(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getUsername(),
-                user.getPassword(),
-                user.getIsActive());
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Trainee(Long userId,
-                   String firstName,
-                   String lastName,
-                   String username,
-                   String password,
-                   Boolean isActive,
-                   LocalDate dateOfBirth,
-                   String address,
-                   String phoneNumber) {
-        super(userId, firstName, lastName, username, password, isActive);
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-    }
-
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }

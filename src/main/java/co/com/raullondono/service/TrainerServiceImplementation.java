@@ -3,6 +3,7 @@ package co.com.raullondono.service;
 import co.com.raullondono.dao.TrainerDAO;
 import co.com.raullondono.domain.Trainer;
 import co.com.raullondono.domain.TrainingType;
+import co.com.raullondono.util.PasswordGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,21 +19,21 @@ public class TrainerServiceImplementation implements TrainerService {
     @Autowired
     private TrainerDAO trainerDAO;
 
+    @Autowired
+    PasswordGenerator passwordGenerator;
+
     @Override
     public Trainer createTrainer(Long userId,
                                  String firstName,
                                  String lastName,
-                                 String username,
-                                 String password,
-                                 Boolean isActive,
                                  TrainingType specialization) {
         Objects.requireNonNull(userId, "userId");
         var t = new Trainer();
         t.setUserId(userId);
         t.setFirstName(firstName);
         t.setLastName(lastName);
-        t.setUsername(username);
-        t.setPassword(password);
+        t.setUsername(firstName + "." + lastName);
+        t.setPassword(passwordGenerator.generate());
         t.setSpecialization(specialization);
 
         var created = trainerDAO.createTrainer(t);

@@ -9,9 +9,6 @@ public interface TraineeService {
     Trainee createTrainee(Long userId,
                           String firstName,
                           String lastName,
-                          String username,
-                          String password,
-                          Boolean isActive,
                           LocalDate dateOfBirth,
                           String address,
                           String phoneNumber);
