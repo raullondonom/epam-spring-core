@@ -13,15 +13,6 @@ public class User {
 
     }
 
-    public User(Long userId, String firstName, String lastName, String username, String password, Boolean isActive) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
-        this.isActive = isActive;
-    }
-
     public Long getUserId() {
         return userId;
     }

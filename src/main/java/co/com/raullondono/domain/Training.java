@@ -16,22 +16,6 @@ public class Training {
 
     }
 
-    public Training(Long trainingId,
-                    Trainer trainerId,
-                    Trainee traineeId,
-                    String trainingName,
-                    TrainingType trainingType,
-                    LocalDateTime trainingDate,
-                    Double trainingDuration) {
-        this.trainingId = trainingId;
-        this.trainerId = trainerId;
-        this.traineeId = traineeId;
-        this.trainingName = trainingName;
-        this.trainingType = trainingType;
-        this.trainingDate = trainingDate;
-        this.trainingDuration = trainingDuration;
-    }
-
     public Long getTrainingId() {
         return trainingId;
     }
