@@ -1,7 +1,6 @@
 package co.com.raullondono.service;
 
 import co.com.raullondono.domain.Training;
-import co.com.raullondono.domain.TrainingType;
 
 import java.time.LocalDateTime;
 

@@ -1,7 +1,6 @@
 package co.com.raullondono.service;
 
 import co.com.raullondono.domain.Trainer;
-import co.com.raullondono.domain.TrainingType;
 
 public interface TrainerService {
 

@@ -8,8 +8,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.SmartInitializingSingleton;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
@@ -60,7 +60,8 @@ public class DataInitializer implements SmartInitializingSingleton {
                 log.warn("Trainees file not found: {}", path);
                 return;
             }
-            List<Trainee> rows = mapper.readValue(is, new TypeReference<List<Trainee>>() {});
+            List<Trainee> rows = mapper.readValue(is, new TypeReference<List<Trainee>>() {
+            });
             rows.forEach(t -> traineeStorage.put(t.getUserId(), t));
             log.info("Trainees preloaded: {}", traineeStorage.size());
         } catch (Exception e) {
@@ -77,7 +78,8 @@ public class DataInitializer implements SmartInitializingSingleton {
                 log.warn("Trainers file not found: {}", path);
                 return;
             }
-            List<Trainer> rows = mapper.readValue(is, new TypeReference<List<Trainer>>() {});
+            List<Trainer> rows = mapper.readValue(is, new TypeReference<List<Trainer>>() {
+            });
             rows.forEach(t -> trainerStorage.put(t.getUserId(), t));
             log.info("Trainers preloaded: {}", trainerStorage.size());
         } catch (Exception e) {
@@ -95,7 +97,8 @@ public class DataInitializer implements SmartInitializingSingleton {
                 return;
             }
 
-            List<Map<String, Object>> rows = mapper.readValue(is, new TypeReference<List<Map<String, Object>>>() {});
+            List<Map<String, Object>> rows = mapper.readValue(is, new TypeReference<List<Map<String, Object>>>() {
+            });
             for (Map<String, Object> r : rows) {
                 Training tr = new Training();
                 tr.setTrainingId(((Number) r.get("trainingId")).longValue());

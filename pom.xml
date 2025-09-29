@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>24</maven.compiler.source>
-        <maven.compiler.target>24</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>6.2.11</spring.version>
         <junit.jupiter.version>5.13.4</junit.jupiter.version>
@@ -21,7 +21,7 @@
         <sonar.projectKey>epam-spring-core</sonar.projectKey>
         <sonar.projectName>EPAM Spring Core</sonar.projectName>
         <sonar.host.url>http://localhost:9000</sonar.host.url>
-        <sonar.token>sqa_075a105b6d0f8c412ba1d517364ab03abe7b0f2c</sonar.token>
+        <sonar.token>sqa_3c2298c71573756189902b1376b6c4d12b0a3cfb</sonar.token>
         <sonar.coverage.jacoco.xmlReportPaths>
             ${project.basedir}/target/site/jacoco/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
@@ -57,6 +57,12 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.13.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>

@@ -25,8 +25,8 @@ public class GymFacadeImplementation implements GymFacade {
     private final TrainingService trainingService;
 
     public GymFacadeImplementation(TraineeService traineeService,
-                         TrainerService trainerService,
-                         TrainingService trainingService) {
+                                   TrainerService trainerService,
+                                   TrainingService trainingService) {
         this.traineeService = Objects.requireNonNull(traineeService);
         this.trainerService = Objects.requireNonNull(trainerService);
         this.trainingService = Objects.requireNonNull(trainingService);

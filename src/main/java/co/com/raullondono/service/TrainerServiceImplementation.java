@@ -17,13 +17,12 @@ import java.util.Objects;
 public class TrainerServiceImplementation implements TrainerService {
 
     private static final Logger log = LoggerFactory.getLogger(TrainerServiceImplementation.class);
-
+    @Autowired
+    PasswordGenerator passwordGenerator;
     @Autowired
     private TrainerDAO trainerDAO;
     @Autowired
     private UsernameService usernameService;
-    @Autowired
-    PasswordGenerator passwordGenerator;
 
     public TrainerServiceImplementation() {
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 @Service
-public class UsernameServiceImplementation implements  UsernameService {
+public class UsernameServiceImplementation implements UsernameService {
 
     @Autowired
     private TraineeDAO traineeDAO;

@@ -41,9 +41,9 @@ class TrainingServiceTest {
         when(trainerService.selectTrainer(1L)).thenReturn(new Trainer());
 
         Training result = service.createTraining(
-                1L, 2L,  "Initial Session",
-                 "CARDIO",
-                 LocalDateTime.now(),
+                1L, 2L, "Initial Session",
+                "CARDIO",
+                LocalDateTime.now(),
                 65.0
         );
 
