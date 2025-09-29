@@ -26,13 +26,10 @@ public class TrainerServiceImplementation implements TrainerService {
     PasswordGenerator passwordGenerator;
 
     @Override
-    public Trainer createTrainer(Long userId,
-                                 String firstName,
+    public Trainer createTrainer(String firstName,
                                  String lastName,
                                  TrainingType specialization) {
-        Objects.requireNonNull(userId, "userId");
         var t = new Trainer();
-        t.setUserId(userId);
 
         firstName = StringUtils.capitalize(firstName);
         NameValidator.validateAndFormatSingleWord(firstName, "firstName");
@@ -47,21 +44,21 @@ public class TrainerServiceImplementation implements TrainerService {
         t.setSpecialization(specialization);
 
         var created = trainerDAO.createTrainer(t);
-        log.info("Trainee created id={}, username={}", created.getUsername(), created.getUsername());
+        log.info("Trainer created id={}, username={}", created.getUsername(), created.getUsername());
         return created;
     }
 
     @Override
     public Trainer updateTrainer(Trainer trainer) {
-        Objects.requireNonNull(trainer, "trainee");
+        Objects.requireNonNull(trainer, "trainer");
         var updated = trainerDAO.updateTrainer(trainer);
-        log.info("Trainee updated id={}", updated.getUserId());
+        log.info("Trainer updated id={}", updated.getUserId());
         return updated;
     }
 
     @Override
     public Trainer selectTrainer(Long trainerId) {
-        Objects.requireNonNull(trainerId, "traineeId");
+        Objects.requireNonNull(trainerId, "trainerId");
         return trainerDAO.selectTrainer(trainerId);
     }
 

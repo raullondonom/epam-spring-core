@@ -5,8 +5,7 @@ import co.com.raullondono.domain.TrainingType;
 
 public interface TrainerService {
 
-    Trainer createTrainer(Long userId,
-                          String firstName,
+    Trainer createTrainer(String firstName,
                           String lastName,
                           TrainingType specialization);
 

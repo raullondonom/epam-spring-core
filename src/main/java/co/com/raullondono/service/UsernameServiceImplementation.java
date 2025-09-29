@@ -36,7 +36,7 @@ public class UsernameServiceImplementation implements  UsernameService {
     }
 
     private boolean exists(String username) {
-        return traineeDAO.existsByUsername(username) && trainerDAO.existsByUsername(username);
+        return traineeDAO.existsByUsername(username) || trainerDAO.existsByUsername(username);
     }
 }
 

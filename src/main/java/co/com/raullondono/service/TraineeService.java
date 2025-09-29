@@ -6,8 +6,7 @@ import java.time.LocalDate;
 
 public interface TraineeService {
 
-    Trainee createTrainee(Long userId,
-                          String firstName,
+    Trainee createTrainee(String firstName,
                           String lastName,
                           LocalDate dateOfBirth,
                           String address,

@@ -26,15 +26,12 @@ public class TraineeServiceImplementation implements TraineeService {
     private PasswordGenerator passwordGenerator;
 
     @Override
-    public Trainee createTrainee(Long userId,
-                                 String firstName,
+    public Trainee createTrainee(String firstName,
                                  String lastName,
                                  LocalDate dateOfBirth,
                                  String address,
                                  String phoneNumber) {
-        Objects.requireNonNull(userId, "userId");
         var t = new Trainee();
-        t.setUserId(userId);
 
         firstName = StringUtils.capitalize(firstName);
         NameValidator.validateAndFormatSingleWord(firstName, "firstName");

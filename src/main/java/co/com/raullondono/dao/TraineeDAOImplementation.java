@@ -14,6 +14,7 @@ import java.util.Objects;
 public class TraineeDAOImplementation implements TraineeDAO {
 
     private static final Logger log = LoggerFactory.getLogger(TraineeDAOImplementation.class);
+    private static Long actualId = 1L;
     private Map<Long, Trainee> storage;
 
     @Autowired
@@ -24,7 +25,9 @@ public class TraineeDAOImplementation implements TraineeDAO {
     @Override
     public Trainee createTrainee(Trainee trainee) {
         Objects.requireNonNull(trainee.getUserId(), "id cannot be null");
-        storage.put(trainee.getUserId(), trainee);
+        trainee.setUserId(actualId);
+        storage.put(actualId, trainee);
+        actualId++;
         log.debug("Trainee saved id={}", trainee.getUserId());
         return trainee;
     }

@@ -14,7 +14,7 @@ import java.util.Objects;
 public class TrainerDAOImplementation implements TrainerDAO {
 
     private static final Logger log = LoggerFactory.getLogger(TrainerDAOImplementation.class);
-
+    private static Long actualId = 1L;
     private Map<Long, Trainer> storage;
 
     @Autowired
@@ -26,7 +26,9 @@ public class TrainerDAOImplementation implements TrainerDAO {
     public Trainer createTrainer(Trainer trainer) {
         Objects.requireNonNull(trainer);
         Objects.requireNonNull(trainer.getUserId());
-        storage.put(trainer.getUserId(), trainer);
+        trainer.setUserId(actualId);
+        storage.put(actualId, trainer);
+        actualId++;
         log.debug("Trainer created id={}", trainer.getUserId());
         return trainer;
     }
