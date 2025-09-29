@@ -114,6 +114,8 @@ public class DataInitializer implements SmartInitializingSingleton {
                 tr.setTrainingDate(LocalDateTime.parse(r.get("trainingDate").toString()));
                 TrainingType type = TrainingType.valueOf(r.get("trainingType").toString());
                 tr.setTrainingType(type);
+                tr.setTrainingName((String) r.get("trainingName"));
+                tr.setTrainingDuration((Double) r.get("trainingDuration"));
 
                 trainingStorage.put(tr.getTrainingId(), tr);
             }

@@ -1,4 +1,4 @@
-package co.com.raullondono.exceptions;
+package co.com.raullondono.exception;
 
 public class NameValidationException extends RuntimeException {
 

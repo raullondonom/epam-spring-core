@@ -1,6 +1,6 @@
 package co.com.raullondono.util;
 
-import co.com.raullondono.exceptions.NameValidationException;
+import co.com.raullondono.exception.NameValidationException;
 
 public final class NameValidator {
 

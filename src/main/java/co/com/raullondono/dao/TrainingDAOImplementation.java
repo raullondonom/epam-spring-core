@@ -14,7 +14,7 @@ import java.util.Objects;
 public class TrainingDAOImplementation implements TrainingDAO {
 
     private static final Logger log = LoggerFactory.getLogger(TrainingDAOImplementation.class);
-
+    private static Long actualId = 1L;
     private Map<Long, Training> storage;
 
     @Autowired
@@ -26,8 +26,10 @@ public class TrainingDAOImplementation implements TrainingDAO {
     public Training createTraining(Training training) {
         Objects.requireNonNull(training);
         Objects.requireNonNull(training.getTrainingId());
-        storage.put(training.getTrainingId(), training);
-        log.debug("Training creado id={}", training.getTrainingId());
+        training.setTrainingId(actualId);
+        storage.put(actualId, training);
+        actualId++;
+        log.debug("Training created id={}", training.getTrainingId());
         return training;
     }
 
