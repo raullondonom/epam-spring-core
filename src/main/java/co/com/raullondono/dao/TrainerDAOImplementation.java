@@ -46,4 +46,9 @@ public class TrainerDAOImplementation implements TrainerDAO {
         return storage.get(traineeId);
     }
 
+    @Override
+    public boolean existsByUsername(String username) {
+        return storage.values().stream().anyMatch(t -> username.equals(t.getUsername()));
+    }
+
 }

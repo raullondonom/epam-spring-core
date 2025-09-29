@@ -2,11 +2,13 @@ package co.com.raullondono.service;
 
 import co.com.raullondono.dao.TraineeDAO;
 import co.com.raullondono.domain.Trainee;
+import co.com.raullondono.util.NameValidator;
 import co.com.raullondono.util.PasswordGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -18,7 +20,8 @@ public class TraineeServiceImplementation implements TraineeService {
 
     @Autowired
     private TraineeDAO traineeDAO;
-
+    @Autowired
+    private UsernameService usernameService;
     @Autowired
     private PasswordGenerator passwordGenerator;
 
@@ -32,9 +35,16 @@ public class TraineeServiceImplementation implements TraineeService {
         Objects.requireNonNull(userId, "userId");
         var t = new Trainee();
         t.setUserId(userId);
+
+        firstName = StringUtils.capitalize(firstName);
+        NameValidator.validateAndFormatSingleWord(firstName, "firstName");
         t.setFirstName(firstName);
+
+        lastName = StringUtils.capitalize(lastName);
+        NameValidator.validateAndFormatSingleWord(lastName, "lastName");
         t.setLastName(lastName);
-        t.setUsername(firstName + "." + lastName);
+
+        t.setUsername(usernameService.generateUsername(firstName, lastName));
         t.setPassword(passwordGenerator.generate());
         t.setIsActive(true);
         t.setDateOfBirth(dateOfBirth);

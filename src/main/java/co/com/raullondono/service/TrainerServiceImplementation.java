@@ -3,11 +3,13 @@ package co.com.raullondono.service;
 import co.com.raullondono.dao.TrainerDAO;
 import co.com.raullondono.domain.Trainer;
 import co.com.raullondono.domain.TrainingType;
+import co.com.raullondono.util.NameValidator;
 import co.com.raullondono.util.PasswordGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Objects;
 
@@ -18,7 +20,8 @@ public class TrainerServiceImplementation implements TrainerService {
 
     @Autowired
     private TrainerDAO trainerDAO;
-
+    @Autowired
+    private UsernameService usernameService;
     @Autowired
     PasswordGenerator passwordGenerator;
 
@@ -30,9 +33,16 @@ public class TrainerServiceImplementation implements TrainerService {
         Objects.requireNonNull(userId, "userId");
         var t = new Trainer();
         t.setUserId(userId);
+
+        firstName = StringUtils.capitalize(firstName);
+        NameValidator.validateAndFormatSingleWord(firstName, "firstName");
         t.setFirstName(firstName);
+
+        lastName = StringUtils.capitalize(lastName);
+        NameValidator.validateAndFormatSingleWord(lastName, "lastName");
         t.setLastName(lastName);
-        t.setUsername(firstName + "." + lastName);
+
+        t.setUsername(usernameService.generateUsername(firstName, lastName));
         t.setPassword(passwordGenerator.generate());
         t.setSpecialization(specialization);
 

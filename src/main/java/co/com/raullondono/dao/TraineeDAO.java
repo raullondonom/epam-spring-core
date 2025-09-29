@@ -12,4 +12,6 @@ public interface TraineeDAO {
 
     Trainee selectTrainee(Long traineeId);
 
+    boolean existsByUsername(String username);
+
 }

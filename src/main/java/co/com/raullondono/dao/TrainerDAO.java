@@ -10,4 +10,5 @@ public interface TrainerDAO {
 
     Trainer selectTrainer(Long traineeId);
 
+    boolean existsByUsername(String username);
 }
