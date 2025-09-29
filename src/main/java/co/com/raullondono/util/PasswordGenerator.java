@@ -13,11 +13,11 @@ public class PasswordGenerator {
 
     private final SecureRandom random = new SecureRandom();
 
-    public String generate() {
-        return generate(DEFAULT_LENGTH);
+    public String generatePassword() {
+        return generatePassword(DEFAULT_LENGTH);
     }
 
-    public String generate(int length) {
+    public String generatePassword(int length) {
         if (length <= 0) throw new IllegalArgumentException("Length must be > 0");
         StringBuilder sb = new StringBuilder(length);
         for (int i = 0; i < length; i++) {

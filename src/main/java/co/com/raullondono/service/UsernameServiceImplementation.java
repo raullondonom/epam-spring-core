@@ -14,6 +14,10 @@ public class UsernameServiceImplementation implements  UsernameService {
     @Autowired
     private TrainerDAO trainerDAO;
 
+    public UsernameServiceImplementation() {
+
+    }
+
     @Override
     public String generateUsername(String firstName, String lastName) {
         String formattedFirst = StringUtils.capitalize(firstName);
@@ -27,7 +31,7 @@ public class UsernameServiceImplementation implements  UsernameService {
 
         int i = 2;
         while (true) {
-            String candidate = base + "." + i;
+            String candidate = base + i;
             if (!exists(candidate)) {
                 return candidate;
             }
@@ -38,5 +42,14 @@ public class UsernameServiceImplementation implements  UsernameService {
     private boolean exists(String username) {
         return traineeDAO.existsByUsername(username) || trainerDAO.existsByUsername(username);
     }
+
+    public void setTraineeDAO(TraineeDAO traineeDAO) {
+        this.traineeDAO = traineeDAO;
+    }
+
+    public void setTrainerDAO(TrainerDAO trainerDAO) {
+        this.trainerDAO = trainerDAO;
+    }
+
 }
 

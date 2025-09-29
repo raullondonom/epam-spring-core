@@ -25,23 +25,27 @@ public class TrainerServiceImplementation implements TrainerService {
     @Autowired
     PasswordGenerator passwordGenerator;
 
+    public TrainerServiceImplementation() {
+
+    }
+
     @Override
     public Trainer createTrainer(String firstName,
                                  String lastName,
-                                 TrainingType specialization) {
+                                 String specialization) {
         var t = new Trainer();
 
-        firstName = StringUtils.capitalize(firstName);
+        firstName = StringUtils.capitalize(firstName.toLowerCase());
         NameValidator.validateAndFormatSingleWord(firstName, "firstName");
         t.setFirstName(firstName);
 
-        lastName = StringUtils.capitalize(lastName);
+        lastName = StringUtils.capitalize(lastName.toLowerCase());
         NameValidator.validateAndFormatSingleWord(lastName, "lastName");
         t.setLastName(lastName);
 
         t.setUsername(usernameService.generateUsername(firstName, lastName));
-        t.setPassword(passwordGenerator.generate());
-        t.setSpecialization(specialization);
+        t.setPassword(passwordGenerator.generatePassword());
+        t.setSpecialization(TrainingType.valueOf(specialization));
 
         var created = trainerDAO.createTrainer(t);
         log.info("Trainer created id={}, username={}", created.getUsername(), created.getUsername());
@@ -60,6 +64,18 @@ public class TrainerServiceImplementation implements TrainerService {
     public Trainer selectTrainer(Long trainerId) {
         Objects.requireNonNull(trainerId, "trainerId");
         return trainerDAO.selectTrainer(trainerId);
+    }
+
+    public void setTrainerDAO(TrainerDAO trainerDAO) {
+        this.trainerDAO = trainerDAO;
+    }
+
+    public void setUsernameService(UsernameService usernameService) {
+        this.usernameService = usernameService;
+    }
+
+    public void setPasswordGenerator(PasswordGenerator passwordGenerator) {
+        this.passwordGenerator = passwordGenerator;
     }
 
 }

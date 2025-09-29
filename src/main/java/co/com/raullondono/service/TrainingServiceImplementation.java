@@ -25,11 +25,15 @@ public class TrainingServiceImplementation implements TrainingService {
     @Autowired
     private TraineeService traineeService;
 
+    public TrainingServiceImplementation() {
+
+    }
+
     @Override
     public Training createTraining(Long trainerId,
                                    Long traineeId,
                                    String trainingName,
-                                   TrainingType trainingType,
+                                   String trainingType,
                                    LocalDateTime trainingDate,
                                    Double trainingDuration) {
         Trainee trainee = traineeService.selectTrainee(traineeId);
@@ -42,7 +46,7 @@ public class TrainingServiceImplementation implements TrainingService {
         tr.setTraineeId(trainee);
         tr.setTrainerId(trainer);
         tr.setTrainingName(trainingName);
-        tr.setTrainingType(trainingType);
+        tr.setTrainingType(TrainingType.valueOf(trainingType));
         tr.setTrainingDate(trainingDate);
         tr.setTrainingDuration(trainingDuration);
 
@@ -55,6 +59,18 @@ public class TrainingServiceImplementation implements TrainingService {
     public Training selectTraining(Long trainingId) {
         Objects.requireNonNull(trainingId, "trainingId");
         return trainingDAO.selectTraining(trainingId);
+    }
+
+    public void setTrainingDAO(TrainingDAO trainingDAO) {
+        this.trainingDAO = trainingDAO;
+    }
+
+    public void setTrainerService(TrainerService trainerService) {
+        this.trainerService = trainerService;
+    }
+
+    public void setTraineeService(TraineeService traineeService) {
+        this.traineeService = traineeService;
     }
 
 }

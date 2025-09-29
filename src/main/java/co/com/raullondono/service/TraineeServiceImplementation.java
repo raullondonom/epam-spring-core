@@ -25,6 +25,10 @@ public class TraineeServiceImplementation implements TraineeService {
     @Autowired
     private PasswordGenerator passwordGenerator;
 
+    public TraineeServiceImplementation() {
+
+    }
+
     @Override
     public Trainee createTrainee(String firstName,
                                  String lastName,
@@ -33,16 +37,16 @@ public class TraineeServiceImplementation implements TraineeService {
                                  String phoneNumber) {
         var t = new Trainee();
 
-        firstName = StringUtils.capitalize(firstName);
+        firstName = StringUtils.capitalize(firstName.toLowerCase());
         NameValidator.validateAndFormatSingleWord(firstName, "firstName");
         t.setFirstName(firstName);
 
-        lastName = StringUtils.capitalize(lastName);
+        lastName = StringUtils.capitalize(lastName.toLowerCase());
         NameValidator.validateAndFormatSingleWord(lastName, "lastName");
         t.setLastName(lastName);
 
         t.setUsername(usernameService.generateUsername(firstName, lastName));
-        t.setPassword(passwordGenerator.generate());
+        t.setPassword(passwordGenerator.generatePassword());
         t.setIsActive(true);
         t.setDateOfBirth(dateOfBirth);
 
@@ -71,6 +75,18 @@ public class TraineeServiceImplementation implements TraineeService {
     public Trainee selectTrainee(Long traineeId) {
         Objects.requireNonNull(traineeId, "traineeId");
         return traineeDAO.selectTrainee(traineeId);
+    }
+
+    public void setTraineeDAO(TraineeDAO traineeDAO) {
+        this.traineeDAO = traineeDAO;
+    }
+
+    public void setUsernameService(UsernameService usernameService) {
+        this.usernameService = usernameService;
+    }
+
+    public void setPasswordGenerator(PasswordGenerator passwordGenerator) {
+        this.passwordGenerator = passwordGenerator;
     }
 
 }

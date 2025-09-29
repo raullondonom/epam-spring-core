@@ -10,7 +10,7 @@ public interface TrainingService {
     Training createTraining(Long trainerId,
                             Long traineeId,
                             String trainingName,
-                            TrainingType trainingType,
+                            String trainingType,
                             LocalDateTime trainingDate,
                             Double trainingDuration);
 

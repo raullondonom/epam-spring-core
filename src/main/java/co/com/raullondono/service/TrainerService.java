@@ -7,7 +7,7 @@ public interface TrainerService {
 
     Trainer createTrainer(String firstName,
                           String lastName,
-                          TrainingType specialization);
+                          String specialization);
 
     Trainer updateTrainer(Trainer trainer);
 
